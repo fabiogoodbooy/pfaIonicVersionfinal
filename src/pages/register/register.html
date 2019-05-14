@@ -1,0 +1,51 @@
+<!--<ion-header>
+  <ion-navbar>
+    <ion-title>Register</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-item>
+    <ion-label floating>Email Adresse</ion-label>
+    <ion-input type="text" [(ngModel)]="user.email"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label floating>Password</ion-label>
+    <ion-input type="password" [(ngModel)]="user.password"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label floating>Confirme Password</ion-label>
+    <ion-input type="password" [(ngModel)]="ConfirmePassword"></ion-input>
+  </ion-item>
+  <button ion-button (click)="register(user)">Register</button>
+</ion-content>
+-->
+<!--**************************-->
+<ion-content class="background">
+  <ion-card>
+    <ion-card-header>
+     Crée Compte
+    </ion-card-header>
+    <ion-card-content>
+      <ion-list no-lines>
+        <div class="spacer" style="height: 10px;"></div>
+        <ion-item>
+          <ion-input type="email" placeholder="Email" [(ngModel)]="user.email"></ion-input>
+        </ion-item>
+        <div class="spacer" style="height: 5px;"></div>
+        <ion-item>
+          <ion-input type="password" placeholder="Mot de passe" [(ngModel)]="user.password"></ion-input>
+        </ion-item>
+        <div class="spacer" style="height: 5px;"></div>
+        <ion-item>
+          <ion-input type="password" placeholder="Confirmer mot de passe" [(ngModel)]="ConfirmePassword"></ion-input>
+        </ion-item>
+        <div class="spacer" style="height: 10px;"></div>
+        <button ion-button block round outline color="light" (click)="register(user)">Crée Compte</button>
+        
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
+  
+ 
+</ion-content>

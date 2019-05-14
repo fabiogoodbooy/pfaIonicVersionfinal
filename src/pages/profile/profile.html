@@ -1,0 +1,45 @@
+
+<ion-header>
+  <ion-navbar color="tdanger">
+    <ion-title>Profile</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+<ion-item>
+  <ion-label floating>Nom</ion-label>
+  <ion-input [(ngModel)]="profile.nom"></ion-input>
+</ion-item>
+
+<ion-item>
+  <ion-label floating>Prenom</ion-label>
+  <ion-input [(ngModel)]="profile.prenom"></ion-input>
+</ion-item>
+
+<ion-item>
+  <ion-label floating>Adresse</ion-label>
+  <ion-input [(ngModel)]="profile.adresse"></ion-input>
+</ion-item>
+
+<ion-item>
+  <ion-label floating>Code postal</ion-label>
+  <ion-input [(ngModel)]="profile.codePostal"></ion-input>
+</ion-item>
+
+<ion-item>
+<ion-label floating>Ville</ion-label>
+<ion-input [(ngModel)]="profile.ville"></ion-input>
+</ion-item>
+
+<ion-item>
+  <ion-label floating>Pays</ion-label>
+  <ion-input  [(ngModel)]="profile.pays"></ion-input>
+</ion-item>
+
+<ion-input [(ngModel)]="profile.verifier" type="hidden" value="false"></ion-input>
+
+
+<button ion-button clear block (click)="createProfile()">
+créer </button>
+
+</ion-content>

@@ -1,0 +1,99 @@
+<!--
+  Generated template for the ParkingPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  
+  <ion-toolbar >
+      <ion-searchbar (ionInput)="getItems($event)" ></ion-searchbar>
+      <ion-list *ngIf="showList">
+          
+              <button ion-item *ngFor="let item of items" (click)="check(item)">
+                {{ item }}
+              </button>  
+            </ion-list>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  
+    <ion-card>
+
+        <ion-card-header>
+         
+          <ion-item>
+          <h2 class="titrehg">  Parking gratuit </h2>
+        </ion-item>
+          <p>  Si vous acceptez que votre voiture soit louée</p>
+    
+        </ion-card-header>
+      
+        <ion-card-content>
+           <ion-item>
+                <ion-icon name="key" item-start large></ion-icon>
+                <h2>Pendant votre absence</h2>
+              </ion-item>
+                <p class="ps">votre voiture est mise en location.</p>
+
+                <ion-item>
+                    <ion-icon name="clipboard" item-start large></ion-icon>
+                    <h2 class="ps">TravelCar s’occupe de tout :</h2>
+                  </ion-item>
+                    <p> formalités, contrats et garanties. </p>
+
+                    <ion-item>
+                        <ion-icon name="thumbs-up" item-start large></ion-icon>
+                        <h2>En location, votre véhicule est</h2>
+                      </ion-item>
+                        <p class="ps"> totalement couvert par l’Assurance Tous Risques .</p>
+
+                        <ion-item>
+                            <ion-icon name="cash" item-start large></ion-icon>
+                            <h2 class="ps">Vous recevez une rémunération </h2>
+                          </ion-item>
+                            <p> selon le nombre de kilomètres parcourus par les loueurs de votre véhicule.</p>
+                  </ion-card-content>
+      
+      </ion-card>
+      <ion-card>
+
+          <ion-card-header>
+           
+            <ion-item>
+            <h2 class="titrehp">  Parking payant </h2>
+          </ion-item>
+            <p>  Si vous préférez ne pas louer votre voiture</p>
+      
+          </ion-card-header>
+        
+          <ion-card-content>
+             <ion-item>
+                  <ion-icon name="key" item-start large></ion-icon>
+                  <h2>Nos tarifs sont de</h2>
+                </ion-item>
+                  <p class="psp">40 à 70% moins chers que ceux des parkings classiques.</p>
+  
+                  <ion-item>
+                      <ion-icon name="clipboard" item-start large></ion-icon>
+                      <h2 class="psp">Vous réservez votre place en ligne en quelques clics</h2>
+                    </ion-item>
+                      <p> et ne perdez pas de temps à l’arrivée</p>
+  
+                      <ion-item>
+                          <ion-icon name="thumbs-up" item-start large></ion-icon>
+                          <h2>Votre voiture est garée et surveillée dans un</h2>
+                        </ion-item>
+                          <p class="psp"> parking sécurisé.</p>
+  
+                          <ion-item>
+                              <ion-icon name="cash" item-start large></ion-icon>
+                              <h2 class="psp">Votre paiement s’effectue en ligne et est </h2>
+                            </ion-item>
+                              <p>entièrement sécurisé.</p>
+                    </ion-card-content>
+        
+        </ion-card>
+     
+</ion-content>

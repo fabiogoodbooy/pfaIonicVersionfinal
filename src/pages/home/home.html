@@ -1,0 +1,90 @@
+
+<ion-header>
+  
+        <ion-toolbar >
+            <ion-searchbar (ionInput)="getItems($event)" ></ion-searchbar>
+            <ion-list *ngIf="showList">
+                
+                    <button ion-item *ngFor="let item of items" (click)="check(item)">
+                      {{ item }}
+                    </button>  
+                  </ion-list>
+        </ion-toolbar>
+      </ion-header>
+<ion-content padding>
+   
+    <ion-card  *ngFor="let item of publication  | async">
+
+        <img src="../../assets/imgs/advance-card-map-madison.png">
+        <ion-card-title>
+          {{item.marque}}
+        </ion-card-title>
+       <ion-item>
+          <ion-icon name="car" item-start large></ion-icon>
+          <h2>Date Debut</h2>
+          <p> {{item.type}} </p>
+        </ion-item>
+      
+        <ion-item>
+          <ion-icon name="flame" item-start large ></ion-icon>
+          <h2>Date Fin</h2>
+          <p>{{item.place}} places  {{item.port}}portes</p>
+        </ion-item>
+      
+        <ion-item>
+          <span item-start>{{item.prix}}</span>
+          <span item-start>{{item.key}}</span>
+          
+        </ion-item>
+        <ion-item>
+            <button ion-button icon-start clear item-end >
+                <ion-icon name="trash"></ion-icon>
+                Annuler
+              </button>
+        </ion-item>
+       
+      </ion-card>
+      <ion-card  >
+
+        <img src="../../assets/imgs/bmw.jpg">
+        <ion-card-title>
+          BMW
+        </ion-card-title>
+       <ion-item>
+          <ion-icon name="car" item-start large></ion-icon>
+          <h2>Type</h2>
+          <p> sport </p>
+        </ion-item>
+      
+        <ion-item>
+          <ion-icon name="flame" item-start large ></ion-icon>
+          <h2>PLace et porte</h2>
+          <p>5 places 4 ports</p>
+        </ion-item>
+      
+        <ion-item>
+                <ion-icon name="calendar" item-start large ></ion-icon>
+                <p>Dispo le </p>
+                <ion-badge item-end color="gratuit">24-9-2019</ion-badge>
+                
+          
+          
+        </ion-item>
+        <ion-item>
+                <ion-icon name="calendar" item-start large ></ion-icon>
+                
+              
+                <p>Jusqu'à le </p>
+                <ion-badge item-end color="payant">28-9-2019</ion-badge>
+          
+        </ion-item>
+        <ion-item>
+            <button  color="list" ion-button icon-start clear item-end (click)="detail()">
+                <ion-icon name="locate"  color="list"></ion-icon>
+                Detaile
+              </button>
+        </ion-item>
+       
+      </ion-card>
+
+</ion-content>

@@ -1,0 +1,32 @@
+page-info {
+    .background {
+        background-image: url('https://www.alientech-tools.com/wp-content/uploads/2017/08/login-background.jpg');
+    }
+    ion-card.card {
+        box-shadow: none;
+        background: rgba(39, 89, 128, 0.5);
+        border-radius: 5px;
+    }
+    a, p,
+    ion-card-header.card-header {
+        color: #fff!important;
+    }
+    
+    .list > .item-block:first-child {
+        border: medium none;
+    }
+    
+    
+    
+    .icon {
+        padding-right: 10px;
+    }
+    
+    .bottom {
+        bottom: 0;
+    }
+    
+    .input-cover {
+    position: static;
+    }
+}

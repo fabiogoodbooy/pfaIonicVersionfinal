@@ -1,0 +1,8 @@
+<ion-tabs color="tdanger">
+    <ion-tab [root]="tab1Root" tabTitle="Voiture" tabIcon="car"></ion-tab>
+    <ion-tab [root]="tab3Root" tabTitle="Parking" tabIcon="pin"></ion-tab>
+    <ion-tab [root]="tab4Root" *ngIf="sess==undefined" tabTitle="Login" tabIcon="information-circle"></ion-tab>
+    <ion-tab [root]="tab5Root" *ngIf="sess!=undefined" tabTitle="Profile" tabIcon="information-circle"></ion-tab>
+    <ion-tab [root]="tab6Root" *ngIf="sess!=undefined" tabTitle="chat" tabIcon="text"></ion-tab>
+
+  </ion-tabs>

@@ -1,0 +1,41 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      Page
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content padding id="page6" style="background-color:#FFFFFF;">
+  <form id="page-form2">
+    <ion-item color="none" id="page-list-item8">
+      <ion-avatar item-left>
+        <img src ="../../assets/imgs/avat.jpg" />
+      </ion-avatar>
+      <h2>
+        {{(profileData | async )?.nom}} {{(profileData | async)?.prenom}}
+      </h2>
+    </ion-item>
+    <ion-item color="none" id="page-list-item13">
+      <ion-icon name="mail" item-left></ion-icon>
+      {{email}}
+    </ion-item>
+    <ion-item color="none" id="page-list-item14">
+      <ion-icon name="home" item-left></ion-icon>
+      {{(profileData | async )?.adresse}} ,{{(profileData | async )?.codePostal}} ,{{(profileData | async )?.ville}} 
+    </ion-item>
+    <ion-item color="none" id="page-list-item17">
+      <ion-icon name="globe" item-left></ion-icon>
+      {{(profileData | async )?.pays}}
+    </ion-item>
+    <ion-item color="none" id="page-list-item18">
+      <ion-icon name="call" item-left></ion-icon>
+      +216 26 365 528
+    </ion-item>
+    <ion-item id="page-toggle1">
+      <ion-label>
+        compte vérifier
+      </ion-label>
+      <ion-toggle color="positive"  disabled="true"></ion-toggle>
+    </ion-item>
+  </form>
+</ion-content>
