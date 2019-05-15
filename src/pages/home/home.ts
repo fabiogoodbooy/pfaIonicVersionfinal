@@ -4,7 +4,7 @@ import { NavController } from 'ionic-angular';
 import { Observable } from 'rxjs';
 import { DetailpublicationPage } from '../detailpublication/detailpublication';
 import { RecherchePage } from '../recherche/recherche';
-
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'page-home',
@@ -22,6 +22,7 @@ export class HomePage {
   userid;
   tsinfo;
   profileData ;
+  itemes:Observable<any>
 public loadoalList;
   
   constructor(public db: AngularFireDatabase,
@@ -32,14 +33,19 @@ public loadoalList;
         console.log(snapshot.val())
         console.log(snapshot.key) //contains all users that has apply as true
     })
-    this.publication=this.db.list(`/publication`).valueChanges();
+   this.itemes = this.db.list(`/publication`).snapshotChanges().pipe(
+      map(changes => 
+        changes.map(c => ({ key: c.payload.key, ...c.payload.val() }))
+      )
+    );
+  /*this.publication=this.db.list(`/publication`).valueChanges();
     this.publication.subscribe(data =>{
       this.pkdata = data ;
       
       console.log(this.pkdata);
       this.userid=data.userID;
       console.log(data.userID);
-    })
+    })*/
     
       /*var res = this.db.database.ref().child('reservation');
       var users = this.db.database.ref().child('profile');
@@ -60,7 +66,8 @@ public loadoalList;
   }
   
   
-  detail(){
+  detail(key){
+    console.log(key);
     this.navCtrl.push(DetailpublicationPage);
   }
   initializeItems() {

@@ -1,4 +1,4 @@
-<ion-header>
+<!--<ion-header>
   <ion-navbar>
     <ion-title>
       Page
@@ -39,3 +39,39 @@
     </ion-item>
   </form>
 </ion-content>
+-->
+
+
+
+<ion-header>
+  <ion-navbar>
+      <ion-title>Profile {{(profileData | async )?.nom}}</ion-title>
+  <ion-buttons end>
+    <button ion-button icon-only >
+      <ion-icon name="power"></ion-icon>
+    </button>
+  </ion-buttons>
+</ion-navbar>
+</ion-header>
+
+<ion-content>
+
+    <div class="list card">
+      <ion-item class="profile-item">
+        <div class="profile-picture big-profile-picture">
+          <img src ="../../assets/imgs/avat.jpg" />
+        </div>
+        <h2 class="profile-name dark">   {{(profileData | async )?.nom}} {{(profileData | async)?.prenom}}</h2>
+        <div class="profile-info"> {{(profileData | async )?.adresse}} ,{{(profileData | async )?.codePostal}} ,{{(profileData | async )?.ville}} </div>
+        <div class="profile-info">  {{(profileData | async )?.pays}}</div>
+        <div class="profile-info">{{(profileData | async )?.numberPhone}}</div>
+        <ion-item id="page-toggle1">
+          <ion-label>
+            compte vérifier
+          </ion-label>
+          <ion-toggle color="positive"  disabled="true"></ion-toggle>
+        </ion-item>
+        
+      </ion-item>
+    </div>
+  </ion-content>

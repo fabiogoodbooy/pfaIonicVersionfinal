@@ -5,7 +5,7 @@ export interface Publication  {
     place : string ;
     port :string;
     boitvitess : string ; 
-    keyreservation : string;
     
+   
 
 }

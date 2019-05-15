@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams, LoadingController } from 'ionic-an
 import { AngularFireDatabase } from 'angularfire2/database';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { Observable } from 'rxjs';
+import 'rxjs/add/operator/take'; 
 
 /**
  * Generated class for the ShowProfilePage page.
@@ -28,7 +29,8 @@ export class ShowProfilePage {
     this.email=data.email;
    
      this.profileData = this.afDatabase.object(`profile/${data.uid}`).valueChanges();
-   console.log(this.profileData);
+     console.log(this.profileData);
+     console.log(this.email);
  }
    })
 
@@ -36,6 +38,7 @@ export class ShowProfilePage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad ShowProfilePage');
+    
   }
 
 }

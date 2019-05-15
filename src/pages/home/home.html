@@ -13,59 +13,29 @@
       </ion-header>
 <ion-content padding>
    
-    <ion-card  *ngFor="let item of publication  | async">
-
-        <img src="../../assets/imgs/advance-card-map-madison.png">
-        <ion-card-title>
-          {{item.marque}}
-        </ion-card-title>
-       <ion-item>
-          <ion-icon name="car" item-start large></ion-icon>
-          <h2>Date Debut</h2>
-          <p> {{item.type}} </p>
-        </ion-item>
-      
-        <ion-item>
-          <ion-icon name="flame" item-start large ></ion-icon>
-          <h2>Date Fin</h2>
-          <p>{{item.place}} places  {{item.port}}portes</p>
-        </ion-item>
-      
-        <ion-item>
-          <span item-start>{{item.prix}}</span>
-          <span item-start>{{item.key}}</span>
-          
-        </ion-item>
-        <ion-item>
-            <button ion-button icon-start clear item-end >
-                <ion-icon name="trash"></ion-icon>
-                Annuler
-              </button>
-        </ion-item>
-       
-      </ion-card>
-      <ion-card  >
+   
+      <ion-card *ngFor="let item of itemes  | async" >
 
         <img src="../../assets/imgs/bmw.jpg">
         <ion-card-title>
-          BMW
+          {{item.marque}} Boite {{item.boitvitess}}
         </ion-card-title>
        <ion-item>
           <ion-icon name="car" item-start large></ion-icon>
           <h2>Type</h2>
-          <p> sport </p>
+          <p>{{item.type}}</p>
         </ion-item>
       
         <ion-item>
           <ion-icon name="flame" item-start large ></ion-icon>
           <h2>PLace et porte</h2>
-          <p>5 places 4 ports</p>
+          <p>{{item.place}} places  {{item.port}}portes</p>
         </ion-item>
       
         <ion-item>
                 <ion-icon name="calendar" item-start large ></ion-icon>
                 <p>Dispo le </p>
-                <ion-badge item-end color="gratuit">24-9-2019</ion-badge>
+                <ion-badge item-end color="gratuit">{{item.dateDebut}}</ion-badge>
                 
           
           
@@ -75,11 +45,11 @@
                 
               
                 <p>Jusqu'à le </p>
-                <ion-badge item-end color="payant">28-9-2019</ion-badge>
+                <ion-badge item-end color="payant">{{item.dateFin}}</ion-badge>
           
         </ion-item>
         <ion-item>
-            <button  color="list" ion-button icon-start clear item-end (click)="detail()">
+            <button  color="list" ion-button icon-start clear item-end (click)="detail(item.key)">
                 <ion-icon name="locate"  color="list"></ion-icon>
                 Detaile
               </button>

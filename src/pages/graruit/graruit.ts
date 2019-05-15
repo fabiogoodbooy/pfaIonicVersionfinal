@@ -18,16 +18,16 @@ import { Publication } from '../../models/publication';
 })
 export class GraruitPage {
 publication = {} as Publication;
-keyreservation:string ;
+keypublication:string ;
   constructor( public loader: LoadingController,public db: AngularFireDatabase,private afAuth : AngularFireAuth,public navCtrl: NavController, public navParams: NavParams) {
     let load = this.loader.create({
       content :'Loading ... '
       
   });
   load.present().then(()=>{
-    this.keyreservation = navParams.get('data');
+    this.keypublication = navParams.get('data');
     console.log(navParams.get('data'))
-    console.log(this.keyreservation);
+    console.log(this.keypublication);
     load.dismissAll();
   });
   }
@@ -36,9 +36,8 @@ keyreservation:string ;
     console.log('ionViewDidLoad GraruitPage');
   }
   publie(){
-    this.publication.keyreservation=this.keyreservation;
-  
-      this.db.list(`publication`).push(this.publication)
+   
+      this.db.list(`publication`).update(this.keypublication,this.publication)
       .then(()=> {
         console.log("reservation gratuit OK");
               

@@ -177,8 +177,8 @@ gratuit(){
               this.reservation.userID=auth.uid;
               console.log(this.reservation.userID)
             
-              this.db.list(`reservation`).push(this.reservation)
-              .then((snap)=> {console.log("reservation OK");
+              this.db.list(`publication`).push(this.reservation)
+              .then((snap)=> {console.log("Entrer votre voiture");
                       console.log(snap.key); 
                       console.log(this.reservation)
             this.db.list(`Parking`).update(this.parking,{placeDispo : this.nbdispo});
