@@ -3,6 +3,7 @@ import { AngularFireDatabase } from 'angularfire2/database';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, LoadingController } from 'ionic-angular';
 import { Publication } from '../../models/publication';
+import { HomePage } from '../home/home';
 
 /**
  * Generated class for the GraruitPage page.
@@ -40,7 +41,7 @@ keypublication:string ;
       this.db.list(`publication`).update(this.keypublication,this.publication)
       .then(()=> {
         console.log("reservation gratuit OK");
-              
+        this.navCtrl.push(HomePage)
             
     }
       )

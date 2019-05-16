@@ -124,8 +124,8 @@ export class ReservationPage {
                   
             console.log(this.reservation)
             this.db.list(`Parking`).update(this.parking,{placeDispo : this.nbdispo});
-            //this.navCtrl.push(HomePage);
-            //window.location.reload();
+            this.navCtrl.push(HomePage);
+            window.location.reload();
             
           }
         }

@@ -35,11 +35,14 @@
   <ion-label floating>Pays</ion-label>
   <ion-input  [(ngModel)]="profile.pays"></ion-input>
 </ion-item>
+<ion-item>
+    <ion-label floating>numer Tel </ion-label>
+    <ion-input  [(ngModel)]="profile.numberPhone"></ion-input>
+  </ion-item>
 
 <ion-input [(ngModel)]="profile.verifier" type="hidden" value="false"></ion-input>
 
+<button ion-button block round outline color="gratuit" (click)="createProfile()">créer </button>
 
-<button ion-button clear block (click)="createProfile()">
-créer </button>
 
 </ion-content>

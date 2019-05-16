@@ -22,17 +22,12 @@ export class HomePage {
   userid;
   tsinfo;
   profileData ;
-  itemes:Observable<any>
+  itemes:Observable<any>;
 public loadoalList;
   
   constructor(public db: AngularFireDatabase,
     public navCtrl: NavController) {
-      var query = this.db.database.ref('/reservation/F9VhXy5fwkalcDcAj1rK9MrpOPL2').orderByChild('gratuit').equalTo(false);
-      query.once('value', function (snapshot) {
-       
-        console.log(snapshot.val())
-        console.log(snapshot.key) //contains all users that has apply as true
-    })
+     
    this.itemes = this.db.list(`/publication`).snapshotChanges().pipe(
       map(changes => 
         changes.map(c => ({ key: c.payload.key, ...c.payload.val() }))
@@ -68,7 +63,9 @@ public loadoalList;
   
   detail(key){
     console.log(key);
-    this.navCtrl.push(DetailpublicationPage);
+    this.navCtrl.push(DetailpublicationPage,{
+      keypublication : key
+    });
   }
   initializeItems() {
     this.items = [

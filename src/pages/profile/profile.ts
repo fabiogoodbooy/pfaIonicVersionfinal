@@ -5,6 +5,7 @@ import { NavController, NavParams } from 'ionic-angular';
 import { AngularFireDatabase} from 'angularfire2/database'
 import { AngularFireStorage } from 'angularfire2/storage';
 import { storage } from 'firebase';
+import { HomePage } from '../home/home';
 
 /**
  * Generated class for the ProfilePage page.
@@ -30,7 +31,9 @@ profile = {} as Profile;
   createProfile(){
     this.afAuth.authState.take(1).subscribe(auth =>{
 this.afDatabase.object(`profile/${auth.uid}`).set(this.profile)
-.then(()=> console.log("ok"))
+.then(()=> {this.navCtrl.push(HomePage)
+  window.location.reload();
+})
     })
   }
 

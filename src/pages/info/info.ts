@@ -1,8 +1,10 @@
+import { HomePage } from './../home/home';
 import { ShowProfilePage } from './../show-profile/show-profile';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { ListreservationPage } from '../listreservation/listreservation';
+import { LouerPage } from '../louer/louer';
 
 /**
  * Generated class for the InfoPage page.
@@ -33,5 +35,11 @@ export class InfoPage {
   logout(){
     this.afAuth.auth.signOut();
     localStorage.clear();
+    this.navCtrl.push(HomePage);
+            window.location.reload();
+
+  }
+  louer(){
+    this.navCtrl.push(LouerPage);
   }
 }

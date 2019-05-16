@@ -1,7 +1,10 @@
+import { AngularFireDatabase } from 'angularfire2/database';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, DateTime } from 'ionic-angular';
 import { compareDates } from 'ionic-angular/umd/util/datetime-util';
-
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
+import { DetailpublicationPage } from '../detailpublication/detailpublication';
 /**
  * Generated class for the RecherchePage page.
  *
@@ -17,10 +20,20 @@ import { compareDates } from 'ionic-angular/umd/util/datetime-util';
 export class RecherchePage {
   dateDebut;
   dateFin;
+  df;
   comdebut = new Date('2019-05-01');
   comfin = new Date();
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
-
+  itemes:Observable<any>;
+  constructor(public db: AngularFireDatabase,public navCtrl: NavController, public navParams: NavParams) {
+     
+    this.itemes = this.db.list(`/publication`).snapshotChanges().pipe(
+      map(changes => 
+        changes.map(c => ({ key: c.payload.key, ...c.payload.val() }))
+      )
+      
+    );
+   
+      console.log(this.itemes);
   }
 
   ionViewDidLoad() {
@@ -32,11 +45,13 @@ export class RecherchePage {
   
   check(){
     
-      console.log("OK comp")
-     console.log( this.comdebut.getDate());
-    //  compareDates(this.dateDebut,this.comdebut)
-   
-    console.log(this.dateDebut);
-    console.log(this.dateFin);
+  
+ 
+  }
+  detail(key){
+    console.log(key);
+    this.navCtrl.push(DetailpublicationPage,{
+      keypublication : key
+    });
   }
 }

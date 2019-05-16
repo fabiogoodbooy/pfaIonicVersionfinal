@@ -7,4 +7,5 @@ export interface Reservation{
     prix : string ;
     gratuit : boolean;
     userID : string;
+    valider : false;
 } 

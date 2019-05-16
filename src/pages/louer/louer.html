@@ -1,0 +1,51 @@
+<!--
+  Generated template for the LouerPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+
+<ion-content padding>
+    <ion-card *ngFor="let item of test  | async" >
+
+        <img src="../../assets/imgs/bmw.jpg">
+        <ion-card-title>
+          {{item.marque}} Boite {{item.boitvitess}}
+        </ion-card-title>
+       <ion-item>
+          <ion-icon name="car" item-start large></ion-icon>
+          <h2>Type</h2>
+          <p>{{item.type}}</p>
+        </ion-item>
+      
+        <ion-item>
+          <ion-icon name="flame" item-start large ></ion-icon>
+          <h2>PLace et porte</h2>
+          <p>{{item.place}} places  {{item.port}}portes</p>
+        </ion-item>
+      
+        <ion-item>
+                <ion-icon name="calendar" item-start large ></ion-icon>
+                <p>Dispo le </p>
+                <ion-badge item-end color="gratuit">{{item.dateDebut}}</ion-badge>
+                
+          
+          
+        </ion-item>
+        <ion-item>
+                <ion-icon name="calendar" item-start large ></ion-icon>
+                
+              
+                <p>Jusqu'à le </p>
+                <ion-badge item-end color="payant">{{item.dateFin}}</ion-badge>
+          
+        </ion-item>
+        <ion-item>
+            <button  color="list" ion-button icon-start clear item-end (click)="anuller(item.key)">
+                <ion-icon name="locate"  color="list"></ion-icon>
+                Anuller
+              </button>
+        </ion-item>
+       
+      </ion-card>
+</ion-content>

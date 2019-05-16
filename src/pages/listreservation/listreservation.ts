@@ -5,6 +5,7 @@ import { NavController, NavParams, AlertController } from 'ionic-angular';
 import { keyframes } from '@angular/core/src/animation/dsl';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { HomePage } from '../home/home';
 
 /**
  * Generated class for the ListreservationPage page.
@@ -20,8 +21,8 @@ import { map } from 'rxjs/operators';
 })
 export class ListreservationPage {
   items ;
-test :Observable<any[]>;
-daa: any;
+  test :Observable<any[]>;
+  daa: any;
   constructor(private alertCtrl: AlertController,public db: AngularFireDatabase,public navCtrl: NavController, public navParams: NavParams,private afAuth : AngularFireAuth) {
     
     this.afAuth.authState.take(1).subscribe(data=>{
@@ -37,24 +38,30 @@ daa: any;
     console.log(this.test)
  
 */
-/*
-this.items=this.db.list('reservation',ref => ref.orderByChild('userID').equalTo(data.uid)).snapshotChanges().pipe(
+
+this.test=this.db.list('reservation',ref => ref.orderByChild('userID').equalTo(data.uid)).snapshotChanges().pipe(
   map(
  (changes => 
-    changes.map(c => ({ key: c.payload.key, ...c.payload.val() }))
+    changes.map(c => ({ key: c.payload.key, ...c.payload.val() }
+    ))
   
     )
   )
+  
 )
-  console.log(this.items)
+  
+ this.db.list('publication',ref => ref.orderByChild('id_user_locataire').equalTo(data.uid)).valueChanges().subscribe(data =>{
+          console.log(data)
+          this.items=data;
+          console.log(this.items)
+        });
 
-*/
-
+/*
 this.db.list('reservation',ref => ref.orderByChild('userID').equalTo(data.uid)).valueChanges().subscribe(data =>{
   console.log(data)
   this.items=data;
   console.log(this.items)
-});
+});*/
 //console.log(this.items)
 /*var daa = this.db.database.ref('/reservation')
 .orderByChild('userID')
@@ -85,7 +92,7 @@ console.log(data)
         console.log(snapshot.key) //contains all users that has apply as true*/
     
  
-   
+       
   
 }
 
@@ -93,7 +100,7 @@ console.log(data)
     console.log('ionViewDidLoad ListreservationPage');
   }
   delet(key){
-   /* let alert = this.alertCtrl.create({
+    let alert = this.alertCtrl.create({
       title: 'Confirmer la reservation',
       message: 'NB:l annulation gratuit pendant deux jours',
       buttons: [
@@ -109,18 +116,16 @@ console.log(data)
         {
           text: 'Confirmer',
           handler: () => {
-            this.afAuth.authState.take(1).subscribe(data=>{
-              this.db.list(`reservation/${data.uid}`).remove(key)
-            });
+            this.db.list(`reservation`).remove(key)
+            this.navCtrl.push(HomePage);
             
           }
         }
       ]
     });
-    alert.present();*/
-    this.afAuth.authState.take(1).subscribe(data=>{
-      this.db.list(`reservation/${data.uid}`).remove(key)
-    });
+    alert.present();
+      
+  
   }
   
 }

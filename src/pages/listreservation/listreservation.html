@@ -5,11 +5,6 @@
   Ionic pages and navigation.
 -->
 
-<ion-header>
-  <ion-navbar>
-    <ion-title>listreservation</ion-title>
-  </ion-navbar>
-</ion-header>
 
   
 <ion-content padding>
@@ -18,38 +13,54 @@
     {{item.userID}}
   </div>
 -->
-    <ion-card  *ngFor="let item of items  ">
+    <ion-card  *ngFor="let item of test  | async ">
 
         <img src="../../assets/imgs/advance-card-map-madison.png">
         <ion-card-title>
           {{item.parking}}
         </ion-card-title>
-       <ion-item>
-          <ion-icon name="clock" item-start large></ion-icon>
-          <h2>Date Debut</h2>
-          <p> {{item.dateDebut}} :: {{item.timeDebut}}</p>
-        </ion-item>
-      
         <ion-item>
-          <ion-icon name="timer" item-start large ></ion-icon>
-          <h2>Date Fin</h2>
-          <p>{{item.dateFin}} :: {{item.timeFin}}</p>
-        </ion-item>
+            <ion-icon name="calendar" item-start large ></ion-icon>
+            <p>Date Debut </p>
+            <ion-badge item-end color="gratuit">{{item.dateDebut}}-{{item.timeDebut}}</ion-badge>
+            
       
+      
+    </ion-item>
+    <ion-item>
+            <ion-icon name="calendar" item-start large ></ion-icon>
+            
+          
+            <p>Date Fin</p>
+            <ion-badge item-end color="payant">{{item.dateFin}}-{{item.timeFin}}</ion-badge>
+      
+    </ion-item>
+    
         <ion-item>
+            <ion-icon name="cash" item-start></ion-icon>
+              Prix
+        <ion-badge item-end color="secondary">{{item.prix}}</ion-badge>
+        </ion-item>
+        <ion-item>
+          
           <span item-start>{{item.prix}}</span>
           <span item-start>{{item.key}}</span>
           
         </ion-item>
         <ion-item>
-            <button ion-button icon-start clear item-end (click)="delet(item.key)">
+            <button ion-button icon-start clear item-end  color="list" (click)="delet(item.key)">
                 <ion-icon name="trash"></ion-icon>
                 Annuler
               </button>
         </ion-item>
        
       </ion-card>
+      <div *ngIf="!test">
+       
+           <h1 > Malheureusement Vous avez aucune réservation</h1>
+      
 
+      </div>
 
 </ion-content>
 

@@ -1,3 +1,5 @@
+import { LouerPage } from './../pages/louer/louer';
+import { UpdateProfilePage } from './../pages/update-profile/update-profile';
 import { NgModule, ErrorHandler } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
@@ -42,6 +44,8 @@ import { RecherchePage } from '../pages/recherche/recherche';
     GraruitPage,
     DetailpublicationPage,
     RecherchePage,
+    UpdateProfilePage,
+    LouerPage
   ],
   imports: [
     BrowserModule,
@@ -68,6 +72,8 @@ import { RecherchePage } from '../pages/recherche/recherche';
     GraruitPage,
     DetailpublicationPage,
     RecherchePage,
+    UpdateProfilePage,
+    LouerPage
   ],
   providers: [
     StatusBar,

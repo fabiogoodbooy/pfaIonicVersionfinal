@@ -1,0 +1,43 @@
+
+<ion-content padding >
+  <div *ngFor="let item of profileData | async ">
+    <ion-item>
+      <ion-label floating>Nom</ion-label>
+      <ion-input [(ngModel)]="profile.nom" value="{{item.nom}}"></ion-input>
+    </ion-item>
+    
+    <ion-item>
+      <ion-label floating>Prenom</ion-label>
+      <ion-input [(ngModel)]="profile.prenom" value="{{item.prenom}}"></ion-input>
+    </ion-item>
+    
+    <ion-item>
+      <ion-label floating>Adresse</ion-label>
+      <ion-input [(ngModel)]="profile.adresse" value="{{item.adresse}}"></ion-input>
+    </ion-item>
+    
+    <ion-item>
+      <ion-label floating>Code postal</ion-label>
+      <ion-input [(ngModel)]="profile.codePostal" value="{{item.codePostal}}"></ion-input>
+    </ion-item>
+    
+    <ion-item>
+    <ion-label floating>Ville</ion-label>
+    <ion-input [(ngModel)]="profile.ville" value="{{item.ville}}"></ion-input>
+    </ion-item>
+    
+    <ion-item>
+      <ion-label floating>Pays</ion-label>
+      <ion-input  [(ngModel)]="profile.pays" value="{{item.pays}}"></ion-input>
+    </ion-item>
+    <ion-item>
+        <ion-label floating>numer Tel </ion-label>
+        <ion-input  [(ngModel)]="profile.numberPhone" value="{{item.numberPhone}}"></ion-input>
+      </ion-item>
+    
+    
+    
+    <button ion-button clear block (click)="Modifier()"> Modifier </button>
+  </div>
+    </ion-content>
+    
