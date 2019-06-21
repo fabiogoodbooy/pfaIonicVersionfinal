@@ -20,7 +20,7 @@ import { HomePage } from '../home/home';
   templateUrl: 'listreservation.html',
 })
 export class ListreservationPage {
-  items ;
+  items :Observable<any[]>;
   test :Observable<any[]>;
   daa: any;
   constructor(private alertCtrl: AlertController,public db: AngularFireDatabase,public navCtrl: NavController, public navParams: NavParams,private afAuth : AngularFireAuth) {
@@ -50,11 +50,17 @@ this.test=this.db.list('reservation',ref => ref.orderByChild('userID').equalTo(d
   
 )
   
- this.db.list('publication',ref => ref.orderByChild('id_user_locataire').equalTo(data.uid)).valueChanges().subscribe(data =>{
-          console.log(data)
-          this.items=data;
-          console.log(this.items)
-        });
+this.items= this.db.list('publication',ref => ref.orderByChild('id_user_locataire').equalTo(data.uid)).snapshotChanges().pipe(
+  map(
+ (changes => 
+    changes.map(c => ({ key: c.payload.key, ...c.payload.val() }
+    ))
+  
+    )
+  )
+ 
+         );
+         console.log(this.items)
 
 /*
 this.db.list('reservation',ref => ref.orderByChild('userID').equalTo(data.uid)).valueChanges().subscribe(data =>{

@@ -6,6 +6,7 @@ import { AngularFireDatabase } from 'angularfire2/database';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { Louer } from './../../models/louer';
 import { Lexer } from '@angular/compiler';
+import { LoginPage } from '../login/login';
 /**
  * Generated class for the DetailpublicationPage page.
  *
@@ -21,10 +22,11 @@ import { Lexer } from '@angular/compiler';
 export class DetailpublicationPage {
   publication:Observable<any>;
   key;
-  
+  sess;
   id_user_locataire;
   constructor(public db: AngularFireDatabase,private afAuth : AngularFireAuth,private alertCtrl: AlertController,public navCtrl: NavController, public navParams: NavParams) {
-   this.key = navParams.get("keypublication");
+    this.sess = localStorage.getItem('email');
+    this.key = navParams.get("keypublication");
    console.log(this.key);
    
 
@@ -38,6 +40,7 @@ export class DetailpublicationPage {
     console.log('ionViewDidLoad DetailpublicationPage');
   }
   louer(){
+    if(this.sess){
     let alert = this.alertCtrl.create({
       title: 'vous etes sure ?',
       message: 'le prix total est : 30Dt ',
@@ -68,4 +71,25 @@ export class DetailpublicationPage {
     });
     alert.present();
   }
+  else{
+    let alert = this.alertCtrl.create({
+      title: 'Vous n avez pas le droit',
+      message: 'NB:Connecter pour louer un voiture !',
+      buttons: [
+       
+        {
+          text: 'Ok',
+          handler: () => {
+          
+            this.navCtrl.push(LoginPage);
+           
+            
+          }
+        }
+      ]
+    });
+    alert.present();
+  }
+  }
+  
 }

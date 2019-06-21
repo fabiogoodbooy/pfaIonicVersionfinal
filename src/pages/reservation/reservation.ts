@@ -9,6 +9,7 @@ import { Observable } from 'rxjs';
 import { GraruitPage } from '../graruit/graruit';
 import { map,take } from 'rxjs/operators';
 import 'rxjs/add/operator/take'; 
+import { LoginPage } from '../login/login';
 
 
 /**
@@ -33,9 +34,11 @@ export class ReservationPage {
   pkdata;
   key;
   test ;
+  sess;
   constructor(private alertCtrl: AlertController,
     public db: AngularFireDatabase,private afAuth : AngularFireAuth,
     public navCtrl: NavController, public navParams: NavParams) {
+      this.sess = localStorage.getItem('email');
     this.parking = navParams.get('parking');
     console.log(this.parking)
 
@@ -73,6 +76,7 @@ export class ReservationPage {
   
   payent(){
    
+    if(this.sess){
     this.afAuth.authState.take(1).subscribe(auth =>{
        this.db.list(`reservation`).snapshotChanges().subscribe(ts => {
         this.test=ts;
@@ -133,7 +137,26 @@ export class ReservationPage {
     });
     alert.present();
     //this.vibration.vibrate([2000,1000,2000]);
-  
+  }
+  else{
+    let alert = this.alertCtrl.create({
+      title: 'Vous n avez pas le droit',
+      message: 'NB:Connecter pour le reserver !',
+      buttons: [
+       
+        {
+          text: 'Ok',
+          handler: () => {
+          
+            this.navCtrl.push(LoginPage);
+           
+            
+          }
+        }
+      ]
+    });
+    alert.present();
+  }
   }
   gra(){
     var  db = new Date (this.reservation.dateDebut);
@@ -170,6 +193,7 @@ export class ReservationPage {
 
 }
 gratuit(){
+  if(this.sess){
   this.reservation.gratuit=true
             this.reservation.parking = this.parking;
             this.reservation.prix = "30 Dt"
@@ -189,6 +213,26 @@ gratuit(){
             }
               )
             })
+          }
+          else{
+            let alert = this.alertCtrl.create({
+              title: 'Vous n avez pas le droit',
+              message: 'NB:Connecter pour le reserver !',
+              buttons: [
+               
+                {
+                  text: 'Ok',
+                  handler: () => {
+                  
+                    this.navCtrl.push(LoginPage);
+                   
+                    
+                  }
+                }
+              ]
+            });
+            alert.present();
+          }
                   
             
   /*

@@ -41,12 +41,7 @@
               Prix
         <ion-badge item-end color="secondary">{{item.prix}}</ion-badge>
         </ion-item>
-        <ion-item>
-          
-          <span item-start>{{item.prix}}</span>
-          <span item-start>{{item.key}}</span>
-          
-        </ion-item>
+       
         <ion-item>
             <button ion-button icon-start clear item-end  color="list" (click)="delet(item.key)">
                 <ion-icon name="trash"></ion-icon>
@@ -55,12 +50,48 @@
         </ion-item>
        
       </ion-card>
-      <div *ngIf="!test">
-       
-           <h1 > Malheureusement Vous avez aucune réservation</h1>
-      
 
-      </div>
+
+      <ion-card  *ngFor="let item of items  | async ">
+
+        <img src="../../assets/imgs/advance-card-map-madison.png">
+        <ion-card-title>
+
+          {{item.parking}}
+        </ion-card-title>
+        <ion-item>
+            <ion-icon name="calendar" item-start large ></ion-icon>
+            <p>Date Debut </p>
+            <ion-badge item-end color="gratuit">{{item.dateDebut}}-{{item.timeDebut}}</ion-badge>
+            
+      
+      
+    </ion-item>
+    <ion-item>
+            <ion-icon name="calendar" item-start large ></ion-icon>
+            
+          
+            <p>Date Fin</p>
+            <ion-badge item-end color="payant">{{item.dateFin}}-{{item.timeFin}}</ion-badge>
+      
+    </ion-item>
+    
+    <ion-item>
+    
+       
+  <ion-badge item-end color="danger">votre voiture n'est pas encore louée</ion-badge>
+  </ion-item>
+ 
+        
+        <ion-item>
+            <button ion-button icon-start clear item-end  color="list" (click)="delet(item.key)">
+                <ion-icon name="trash"></ion-icon>
+                Annuler
+              </button>
+        </ion-item>
+       
+      </ion-card>
+
 
 </ion-content>
 
